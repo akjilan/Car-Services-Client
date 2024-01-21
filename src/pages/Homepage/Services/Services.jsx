@@ -4,13 +4,13 @@ import ServicesCard from "./ServicesCard";
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:5005/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
   return (
     <>
-      <div className="mb-4 md:mb-20">
+      <div className="mb-4 md:mb-20 mt-8">
         <section className="text-center space-y-4 md:pb-10 mb-4">
           <h2 className="font-bold text-xl uppercase text-orange-700">
             Services

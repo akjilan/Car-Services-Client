@@ -67,13 +67,13 @@ const Login = () => {
                 <input
                   type="submit"
                   value="Login"
-                  className="btn btn-primary"
+                  className="btn btn-primary uppercase tracking-wider"
                 ></input>
               </div>
               <div>
                 <p>
                   Haven't any accout yet ?{" "}
-                  <Link to="/login/signup"> Sign Up </Link>
+                  <Link to="/login/signup" className="font-bold  uppercase text-sm tracking-wide"> Sign Up </Link>
                 </p>
               </div>
             </form>

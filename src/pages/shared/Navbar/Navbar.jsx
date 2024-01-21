@@ -22,6 +22,13 @@ const Navbar = () => {
       <li className="font-bold text-md tracking-wide uppercase">
         <Link to="/services">Services</Link>
       </li>
+      {user ? (
+        <li className="font-bold text-md tracking-wide uppercase">
+          <Link to="/bookings">Bookings</Link>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
 
