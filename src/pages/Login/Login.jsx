@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/images/login/login.svg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import axios from "axios";
 const Login = () => {
   const { signInUser, setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,7 +20,20 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        alert("Sign In Successfull");
+        const loggedInUserEmail = {
+          user: user.email,
+        };
+        axios.post(`http://localhost:5005/accesstoken`, loggedInUserEmail,{withCredentials:true})
+          // .then((res) => res.json())
+          .then((data) => {
+            // console.log(data.token);
+            //saving the token in the local storage:
+            // localStorage.setItem("car-access-token", data.token);
+            console.log(data.data.token)
+            navigate(from, { replace: true });
+            Swal.fire("Logged in sucessfully!!!!!!");
+          });
+
         form.reset();
       })
       .catch((error) => setError(error));
@@ -73,7 +91,13 @@ const Login = () => {
               <div>
                 <p>
                   Haven't any accout yet ?{" "}
-                  <Link to="/login/signup" className="font-bold  uppercase text-sm tracking-wide"> Sign Up </Link>
+                  <Link
+                    to="/login/signup"
+                    className="font-bold  uppercase text-sm tracking-wide"
+                  >
+                    {" "}
+                    Sign Up{" "}
+                  </Link>
                 </p>
               </div>
             </form>

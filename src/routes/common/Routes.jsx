@@ -39,16 +39,16 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5005/services/${params.id}`),
       },
-      {
-        path: "bookings/:id",
-        element: (
-          <PrivateRoute>
-            <BookingUpdate></BookingUpdate>
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5005/services/${params.id}`),
-      },
+    //   {
+    //     path: "bookings/:id",
+    //     element: (
+    //       <PrivateRoute>
+    //         <BookingUpdate></BookingUpdate>
+    //       </PrivateRoute>
+    //     ),
+    //     loader: ({ params }) =>
+    //       fetch(`http://localhost:5005/services/${params.id}`),
+    //   },
       {
         path: "/bookings",
         element: (

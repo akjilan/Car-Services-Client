@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import logo from "../../../assets/logo.jpg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const handleSignOutButton = () => {
     signOutUser()
       .then(() => {
-        alert("Sign Out Successfull");
+        localStorage.removeItem("car-access-token");
+        Swal.fire("Signed out sucessfully!");
       })
       .catch((error) => console.log(error));
   };

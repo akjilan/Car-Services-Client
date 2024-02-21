@@ -74,9 +74,9 @@ const CartsCard = ({ booking, bookingsData, setBookingsData }) => {
               >
                 delete
               </button>
-              <button className="btn btn-sm btn-warning ">
+              {/* <button className="btn btn-sm btn-warning ">
                 <Link to={`/bookings/${_id}`}>Update</Link>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

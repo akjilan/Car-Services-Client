@@ -7,7 +7,7 @@ const Checkout = () => {
   const service = useLoaderData();
   const { img, price, _id ,title } = service;
   const { user } = useContext(AuthContext);
-  console.log(user);
+//   console.log(user);
   const handleCheckoutSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
